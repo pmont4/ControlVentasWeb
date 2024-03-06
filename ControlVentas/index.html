@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto - Compu</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="scripts/Index.js"></script>
+</head>
+<body>
+    <div id="textoInicial" style="display: block;">
+        <p>
+            Haga clic en un formulario para comenzar.
+        </p>
+    </div>
+    <nav>
+        <ul>
+            <li onclick="mostrarVista('vistaClientes')"><a href="#">CLIENTES</a></li>
+            <li onclick="mostrarVista('vistaProveedores')"><a href="#">PROVEEDORES</a></li>
+            <li onclick="mostrarVista('vistaVendedores')"><a href="#">VENDEDORES</a></li>
+            <li onclick="mostrarVista('vistaProductos')"><a href="#">PRODUCTOS</a></li>
+        </ul>
+    </nav>
+
+    <div class="proveedores" id="vistaProveedores" style="display: none;">
+        <h1>FORMULARIO PROVEEDORES:</h3>
+            <form id="formulario_proveedores">
+                <label>Nombre:</label>
+                <input type="text" id="nombre_form1">
+
+                <label>Telefono:</label>
+                <input type="number" id="telefono_form1">
+
+                <label>Correo:</label>
+                <input type="email" id="correo_form1">
+
+                <label>Empresa:</label>
+                <input type="text" id="empresa_form1">
+
+                <label>Direccion de empresa:</label>
+                <input type="text" id="direccion_form1">
+
+                <label>DPI:</label>
+                <input type="number" id="dpi_form1">
+
+                <label>Fecha de ingreso:</label>
+                <input type="text" id="fecha_form1">
+
+                <br>
+                <br>
+                <input type="button" value="Registrar" onclick="RegistrarDatos('form1')">
+            </form>
+            <br>
+    </div>
+
+    <div class="clientes" id="vistaClientes" style="display: none;">
+        <h1>FORMULARIO CLIENTES:</h3>
+            <form id="formulario_clientes">
+                <label>Nombre:</label>
+                <input type="text" id="nombre_form1">
+
+                <label>Apellido:</label>
+                <input type="text" id="apellido_form1">
+
+                <label>Edad:</label>
+                <input type="number" id="edad_form1">
+
+                <label>Telefono:</label>
+                <input type="number" id="telefono_form1">
+
+                <label>Correo:</label>
+                <input type="email" id="correo_form1">
+
+                <label>Domicilio:</label>
+                <input type="text" id="domicilio_form1">
+
+                <label>DPI:</label>
+                <input type="number" id="dpi_form1">
+
+                <br>
+                <br>
+                <input type="button" value="Registrar" onclick="RegistrarDatos('form1')">
+            </form>
+            <br>
+    </div>
+
+    <div class="vendedores" id="vistaVendedores" style="display: none;">
+        <h1>FORMULARIO VENDEDORES:</h3>
+            <form id="formulario_vendedores">
+                <label>Nombre:</label>
+                <input type="text" id="nombre_form1">
+
+                <label>Apellido:</label>
+                <input type="text" id="apellido_form1">
+
+                <label>Edad:</label>
+                <input type="number" id="edad_form1">
+
+                <label>Telefono:</label>
+                <input type="number" id="telefono_form1">
+
+                <label>Correo:</label>
+                <input type="email" id="correo_form1">
+
+                <label>Domicilio:</label>
+                <input type="text" id="domicilio_form1">
+
+                <label>DPI:</label>
+                <input type="number" id="dpi_form1">
+
+                <label>Total de ventas:</label>
+                <input type="number" id="ventas_form1">
+
+                <label>Fecha de inicio:</label>
+                <input type="text" id="fecha_form1">
+
+                <br>
+                <br>
+                <input type="button" value="Registrar" onclick="RegistrarDatos('form1')">
+            </form>
+            <br>
+    </div>
+
+    <div class="productos" id="vistaProductos" style="display: none;">
+        <h1>FORMULARIO PRODUCTOS:</h3>
+            <form id="formulario_productos">
+                <label>ID Producto:</label>
+                <input type="number" id="id_form1">
+
+                <label>Descripcion del producto:</label>
+                <input type="text" id="descripcion_form1">
+
+                <label>Marca:</label>
+                <input type="text" id="marca_form1">
+
+                <label>Precio unitario:</label>
+                <input type="number" id="preciou_form1">
+
+                <label>Cantidad en existencia:</label>
+                <input type="number" id="cantidad_form1">
+
+                <label>Total de ventas:</label>
+                <input type="number" id="total_form1">
+
+                <br>
+                <br>
+                <input type="button" value="Registrar" onclick="RegistrarDatos('form1')">
+            </form>
+            <br>
+    </div>
+
+</body>
+</html>

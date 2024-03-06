@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto - Clientes</title>
+
+    <script>
+        function RegistrarDatos() {
+
+            var tabla = document.getElementById("tablaDatos1");
+            var fila = tabla.insertRow(-1);
+
+            fila.insertCell(0).innerHTML = document.getElementById("id_form1").value;
+            fila.insertCell(1).innerHTML = document.getElementById("descripcion_form1").value;
+            fila.insertCell(2).innerHTML = document.getElementById("marca_form1").value;
+            fila.insertCell(3).innerHTML = document.getElementById("preciou_form1").value;
+            fila.insertCell(4).innerHTML = document.getElementById("cantidad_form1").value;
+            fila.insertCell(5).innerHTML = document.getElementById("total_form1").value;
+
+            document.getElementById("id_form1").value = '';
+            document.getElementById("descripcion_form1").value = '';
+            document.getElementById("marca_form1").value = '';
+            document.getElementById("preciou_form1").value = '';
+            document.getElementById("cantidad_form1").value = '';
+            document.getElementById("total_form1").value = '';
+
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table {
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            border: 2px solid black;
+        }
+
+        label {
+            font-weight: bold;
+        }
+        nav {
+            background-color: #333;
+            padding: 1rem;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="clientes.html">CLIENTES</a></li>
+            <li><a href="proveedores.html">PROVEEDORES</a></li>
+            <li><a href="vendedores.html">VENDEDORES</a></li>
+            <li><a href="productos.html">PRODUCTOS</a></li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <div class="productos">
+        <h1>FORMULARIO PRODUCTOS:</h3>
+            <form id="formulario_1">
+                <label>ID Producto:</label>
+                <input type="number" id="id_form1">
+
+                <label>Descripcion del producto:</label>
+                <input type="text" id="descripcion_form1">
+
+                <label>Marca:</label>
+                <input type="text" id="marca_form1">
+
+                <label>Precio unitario:</label>
+                <input type="number" id="preciou_form1">
+
+                <label>Cantidad en existencia:</label>
+                <input type="number" id="cantidad_form1">
+
+                <label>Total de ventas:</label>
+                <input type="number" id="total_form1">
+
+                <br>
+                <br>
+                <input type="button" value="Registrar" onclick="RegistrarDatos('form1')">
+            </form>
+            <br>
+            <table id="tablaDatos1">
+                <thead>
+                    <tr>
+                        <th>ID Producto</th>
+                        <th>Descripcion del producto</th>
+                        <th>Marca</th>
+                        <th>Precio unitario</th>
+                        <th>Cantidad en existencia</th>
+                        <th>Total de ventas</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>

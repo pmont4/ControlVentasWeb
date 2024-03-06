@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto - Proveedores</title>
+
+    <script>
+        function RegistrarDatos() {
+
+            var tabla = document.getElementById("tablaDatos1");
+            var fila = tabla.insertRow(-1);
+
+            fila.insertCell(0).innerHTML = document.getElementById("nombre_form1").value;
+            fila.insertCell(1).innerHTML = document.getElementById("apellido_form1").value;
+            fila.insertCell(2).innerHTML = document.getElementById("edad_form1").value;
+            fila.insertCell(3).innerHTML = document.getElementById("telefono_form1").value;
+            fila.insertCell(4).innerHTML = document.getElementById("correo_form1").value;
+            fila.insertCell(5).innerHTML = document.getElementById("domicilio_form1").value;
+            fila.insertCell(6).innerHTML = document.getElementById("dpi_form1").value;
+            fila.insertCell(6).innerHTML = document.getElementById("ventas_form1").value;
+            fila.insertCell(6).innerHTML = document.getElementById("fecha_form1").value;
+
+            document.getElementById("nombre_form1").value = '';
+            document.getElementById("apellido_form1").value = '';
+            document.getElementById("edad_form1").value = '';
+            document.getElementById("telefono_form1").value = '';
+            document.getElementById("correo_form1").value = '';
+            document.getElementById("domicilio_form1").value = '';
+            document.getElementById("dpi_form1").value = '';
+            document.getElementById("ventas_form1").value = '';
+            document.getElementById("fecha_form1").value = '';
+
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table {
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            border: 2px solid black;
+        }
+
+        label {
+            font-weight: bold;
+        }
+        nav {
+            background-color: #333;
+            padding: 1rem;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="clientes.html">CLIENTES</a></li>
+            <li><a href="proveedores.html">PROVEEDORES</a></li>
+            <li><a href="vendedores.html">VENDEDORES</a></li>
+            <li><a href="productos.html">PRODUCTOS</a></li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <div class="vendedores">
+        <h1>FORMULARIO VENDEDORES:</h3>
+            <form id="formulario_1">
+                <label>Nombre:</label>
+                <input type="text" id="nombre_form1">
+
+                <label>Apellido:</label>
+                <input type="text" id="apellido_form1">
+
+                <label>Edad:</label>
+                <input type="number" id="edad_form1">
+
+                <label>Telefono:</label>
+                <input type="number" id="telefono_form1">
+
+                <label>Correo:</label>
+                <input type="email" id="correo_form1">
+
+                <label>Domicilio:</label>
+                <input type="text" id="domicilio_form1">
+
+                <label>DPI:</label>
+                <input type="number" id="dpi_form1">
+
+                <label>Total de ventas:</label>
+                <input type="number" id="ventas_form1">
+
+                <label>Fecha de inicio:</label>
+                <input type="text" id="fecha_form1">
+
+                <br>
+                <br>
+                <input type="button" value="Registrar" onclick="RegistrarDatos('form1')">
+            </form>
+            <br>
+            <table id="tablaDatos1">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Edad</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th>Domicilio</th>
+                        <th>DPI</th>
+                        <th>Total de ventas</th>
+                        <th>Fecha de inicio</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>
