@@ -68,6 +68,7 @@
         let dato_proveedor;
         let dato_cliente;
         let dato_vendedor;
+        let dato_producto;
 
         function RegistrarDatos(form) {
             console.log("hola");
@@ -94,13 +95,13 @@
                     fila.insertCell(5).innerHTML = document.getElementById("form_dpi_proveedores").value;
                     fila.insertCell(6).innerHTML = document.getElementById("form_fecha_proveedores").value;
 
-                    dato_proveedor = "Nombre: " + document.getElementById("form_nombre_proveedores").value + " " +
-                        "Telefono: " + document.getElementById("form_telefono_proveedores").value + " " +
-                        "Correo: " + document.getElementById("form_correo_proveedores").value + " " +
-                        "Empresa: " + document.getElementById("form_empresa_proveedores").value + " " +
-                        "Direccion: " + document.getElementById("form_direccion_proveedores").value + " " +
+                    dato_proveedor = "NOMBRE: " + document.getElementById("form_nombre_proveedores").value + " " +
+                        "TELEFONO: " + document.getElementById("form_telefono_proveedores").value + " " +
+                        "CORREO: " + document.getElementById("form_correo_proveedores").value + " " +
+                        "EMPRESA: " + document.getElementById("form_empresa_proveedores").value + " " +
+                        "DIRECCION: " + document.getElementById("form_direccion_proveedores").value + " " +
                         "DPI: " + document.getElementById("form_dpi_proveedores").value + " " +
-                        "Fecha Ingreso: " + document.getElementById("form_fecha_proveedores").value;
+                        "FECHA_INGRESO: " + document.getElementById("form_fecha_proveedores").value;
 
                     var tabla_consolidacion = document.getElementById("tabla_consolidacion_proveedores");
                     var fila_consolidacion = tabla_consolidacion.insertRow(-1);
@@ -125,10 +126,10 @@
                     fila.insertCell(2).innerHTML = document.getElementById("form_nit_clientes").value;
                     fila.insertCell(3).innerHTML = document.getElementById("form_correo_clientes").value;
 
-                    dato_cliente = "Nombre: " + document.getElementById("form_nombre_clientes").value + " " +
-                                    "Domicilio: " + document.getElementById("form_domicilio_clientes").value + " " +
+                    dato_cliente = "NOMBRE: " + document.getElementById("form_nombre_clientes").value + " " +
+                                    "DOMICILIO: " + document.getElementById("form_domicilio_clientes").value + " " +
                                     "NIT: " + document.getElementById("form_nit_clientes").value + " " +
-                                    "Correo: " + document.getElementById("form_correo_clientes").value;
+                                    "CORREO: " + document.getElementById("form_correo_clientes").value;
 
                     var tabla_consolidacion = document.getElementById("tabla_consolidacion_clientes");
                     var fila_consolidacion = tabla_consolidacion.insertRow(-1);
@@ -152,14 +153,46 @@
                     fila.insertCell(1).innerHTML = document.getElementById("form_nombre_vendedor").value;
                     fila.insertCell(2).innerHTML = document.getElementById("form_total_ventas_vendedor").value;
 
-                    dato_vendedor = "ID_Vendedor: " + document.getElementById("form_id_vendedor").value + " " +
-                                    "Nombre: " + document.getElementById("form_nombre_vendedor").value + " " +
-                                    "Total_ventas: " + document.getElementById("form_total_ventas_vendedor").value;
+                    dato_vendedor = "ID_VENDEDOR: " + document.getElementById("form_id_vendedor").value + " " +
+                                    "NOMBRE: " + document.getElementById("form_nombre_vendedor").value + " " +
+                                    "TOTAL_VENTAS: " + document.getElementById("form_total_ventas_vendedor").value;
 
                     var tabla_consolidacion = document.getElementById("tabla_consolidacion_vendedores");
                     var fila_consolidacion = tabla_consolidacion.insertRow(-1);
 
                     fila_consolidacion.insertCell(0).innerHTML = dato_vendedor;
+                    break;
+                case 'productos':
+                    var div_tabla = document.getElementById("tabla_productos");
+                    div_tabla.style.display = "block";
+
+                    var tabla = document.getElementById("tabla_datos_productos");
+                    var fila = tabla.insertRow(-1);
+
+                    var rowCount = tabla.rows.length;
+
+                    if (rowCount === 3) {
+                        tabla.deleteRow(rowCount - 2);
+                    }
+
+                    fila.insertCell(0).innerHTML = document.getElementById("form_id_producto").value;
+                    fila.insertCell(1).innerHTML = document.getElementById("form_descripcion_producto").value;
+                    fila.insertCell(2).innerHTML = document.getElementById("form_marca_producto").value;
+                    fila.insertCell(3).innerHTML = document.getElementById("form_preciou_producto").value;
+                    fila.insertCell(4).innerHTML = document.getElementById("form_cantidad_producto").value;
+                    fila.insertCell(5).innerHTML = document.getElementById("form_total_producto").value;
+
+                    dato_producto = "ID_PRODUCTO: " + document.getElementById("form_id_producto").value + " " +
+                        "DESCRIPCION: " + document.getElementById("form_descripcion_producto").value + " " +
+                        "MARCA: " + document.getElementById("form_marca_producto").value + " " +
+                        "PRECIO_UNITARIO: " + document.getElementById("form_preciou_producto").value + " " +
+                        "EXISTENCIA: " + document.getElementById("form_cantidad_producto").value + " " +
+                        "TOTAL_VENTAS: " + document.getElementById("form_total_producto").value;
+
+                    var tabla_consolidacion = document.getElementById("tabla_consolidacion_productos");
+                    var fila_consolidacion = tabla_consolidacion.insertRow(-1);
+
+                    fila_consolidacion.insertCell(0).innerHTML = dato_producto;
                     break;
             }
 
@@ -312,7 +345,7 @@
         <h1>FORMULARIO PRODUCTOS:</h3>
             <form id="formulario_productos">
                 <label>ID Producto:</label>
-                <input type="number" id="iform_d_producto">
+                <input type="number" id="form_id_producto">
 
                 <label>Descripcion del producto:</label>
                 <input type="text" id="form_descripcion_producto">
@@ -334,6 +367,23 @@
                 <input type="button" value="Registrar" onclick="RegistrarDatos('productos')">
             </form>
             <br>
+            <div id="tabla_productos" style="display: none;">
+                <table id="tabla_datos_productos">
+                    <thead>
+                        <tr>
+                            <th>ID Producto</th>
+                            <th>Descripcion del producto</th>
+                            <th>Marca</th>
+                            <th>Precio unitario</th>
+                            <th>Cantidad en existencia</th>
+                            <th>Total de ventas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
     </div>
     
     <br>
@@ -344,7 +394,7 @@
             <table id="tabla_text_consolidadcion">
                 <thead>
                     <tr>
-                        <th style="font-weight: bold; font-size: 18px;">CONSOLIDACION DE DATOS</th>
+                        <th style="font-weight: bold; font-size: 20px;">CONSOLIDACION DE DATOS</th>
                     </tr>
                 </thead>
             </table>
@@ -378,6 +428,18 @@
                 <thead>
                     <tr>
                         <th>Datos vendedores</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div id="consolidacion_productos">
+            <table id="tabla_consolidacion_productos">
+                <thead>
+                    <tr>
+                        <th>Datos productos</th>
                     </tr>
                 </thead>
                 <tbody>
