@@ -1,0 +1,14 @@
+version: '3.9'
+networks:
+  controlventasweb-net:
+    name: controlventasweb-net
+services:
+  controlventasweb:
+    image: controlventasweb:latest
+    container_name: ControlVentasWeb-ProyectoSistemas
+    ports:
+      - "8081:80"
+    networks:
+      - controlventasweb-net
+    volumes:
+      - c:/Users/paulo/OneDrive/Documentos/repositorios/ControlVentasWeb/ControlVentas:/usr/share/nginx/html
