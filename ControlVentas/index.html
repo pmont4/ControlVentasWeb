@@ -42,6 +42,14 @@
             border: 2px solid black;
         }
 
+        th {
+            background-color: SKYBLUE;
+        }
+
+        td {
+            background-color: LIGHTGREY;
+        }
+
         label {
             font-weight: bold;
         }
@@ -71,8 +79,6 @@
         let dato_producto;
 
         function RegistrarDatos(form) {
-            console.log("hola");
-
             switch (form) {
                 case 'proveedores':
                     var div_tabla = document.getElementById("tabla_proveedores");
@@ -94,6 +100,10 @@
                     fila.insertCell(4).innerHTML = document.getElementById("form_direccion_proveedores").value;
                     fila.insertCell(5).innerHTML = document.getElementById("form_dpi_proveedores").value;
                     fila.insertCell(6).innerHTML = document.getElementById("form_fecha_proveedores").value;
+
+                    if (document.getElementById("consolidacion_proveedores").style.display === 'none') {
+                        document.getElementById("consolidacion_proveedores").style.display = 'block';
+                    }
 
                     dato_proveedor = "NOMBRE: " + document.getElementById("form_nombre_proveedores").value + " " +
                         "TELEFONO: " + document.getElementById("form_telefono_proveedores").value + " " +
@@ -126,6 +136,10 @@
                     fila.insertCell(2).innerHTML = document.getElementById("form_nit_clientes").value;
                     fila.insertCell(3).innerHTML = document.getElementById("form_correo_clientes").value;
 
+                    if (document.getElementById("consolidacion_clientes").style.display === 'none') {
+                        document.getElementById("consolidacion_clientes").style.display = 'block';
+                    }
+
                     dato_cliente = "NOMBRE: " + document.getElementById("form_nombre_clientes").value + " " +
                                     "DOMICILIO: " + document.getElementById("form_domicilio_clientes").value + " " +
                                     "NIT: " + document.getElementById("form_nit_clientes").value + " " +
@@ -152,6 +166,10 @@
                     fila.insertCell(0).innerHTML = document.getElementById("form_id_vendedor").value;
                     fila.insertCell(1).innerHTML = document.getElementById("form_nombre_vendedor").value;
                     fila.insertCell(2).innerHTML = document.getElementById("form_total_ventas_vendedor").value;
+
+                    if (document.getElementById("consolidacion_vendedores").style.display === 'none') {
+                        document.getElementById("consolidacion_vendedores").style.display = 'block';
+                    }
 
                     dato_vendedor = "ID_VENDEDOR: " + document.getElementById("form_id_vendedor").value + " " +
                                     "NOMBRE: " + document.getElementById("form_nombre_vendedor").value + " " +
@@ -182,6 +200,10 @@
                     fila.insertCell(4).innerHTML = document.getElementById("form_cantidad_producto").value;
                     fila.insertCell(5).innerHTML = document.getElementById("form_total_producto").value;
 
+                    if (document.getElementById("consolidacion_productos").style.display === 'none') {
+                        document.getElementById("consolidacion_productos").style.display = 'block';
+                    }
+
                     dato_producto = "ID_PRODUCTO: " + document.getElementById("form_id_producto").value + " " +
                         "DESCRIPCION: " + document.getElementById("form_descripcion_producto").value + " " +
                         "MARCA: " + document.getElementById("form_marca_producto").value + " " +
@@ -201,6 +223,10 @@
                 f.value = '';
             });
 
+            if (document.getElementById("consolidaciones").style.display === 'none' && document.getElementById("texto_consolidacion").style.display === 'none') {
+                document.getElementById("consolidaciones").style.display = 'flex';
+                document.getElementById("texto_consolidacion").style.display = 'block';
+            }
         }
     </script>
 </head>
@@ -221,185 +247,189 @@
     </nav>
 
     <div class="proveedores" id="vistaProveedores" style="display: none;">
-        <h1>FORMULARIO PROVEEDORES:</h3>
-            <form id="formulario_proveedores">
-
-                <label>Nombre:</label>
-                <input type="text" id="form_nombre_proveedores">
-
-                <label>Telefono:</label>
-                <input type="number" id="form_telefono_proveedores">
-
-                <label>Correo:</label>
-                <input type="email" id="form_correo_proveedores">
-
-                <label>Empresa:</label>
-                <input type="text" id="form_empresa_proveedores">
-
-                <label>Direccion de empresa:</label>
-                <input type="text" id="form_direccion_proveedores">
-
-                <label>DPI:</label>
-                <input type="number" id="form_dpi_proveedores">
-
-                <label>Fecha de ingreso:</label>
-                <input type="date" id="form_fecha_proveedores">
-
+        <center>
+            <h1>FORMULARIO PROVEEDORES:</h3>
+                <form id="formulario_proveedores">
+    
+                    <label>Nombre:</label>
+                    <input type="text" id="form_nombre_proveedores">
+    
+                    <label>Telefono:</label>
+                    <input type="number" id="form_telefono_proveedores">
+    
+                    <label>Correo:</label>
+                    <input type="email" id="form_correo_proveedores">
+                    <br>
+                    <label>Empresa:</label>
+                    <input type="text" id="form_empresa_proveedores">
+    
+                    <label>Direccion de empresa:</label>
+                    <input type="text" id="form_direccion_proveedores">
+    
+                    <label>DPI:</label>
+                    <input type="number" id="form_dpi_proveedores">
+                    <br>
+                    <label>Fecha de ingreso:</label>
+                    <input type="date" id="form_fecha_proveedores">
+    
+                    <br>
+                    <br>
+                    <input type="button" value="Registrar" onclick="RegistrarDatos('proveedores')">
+                </form>
                 <br>
-                <br>
-                <input type="button" value="Registrar" onclick="RegistrarDatos('proveedores')">
-            </form>
-            <br>
-            <div id="tabla_proveedores" style="display: none;">
-                <table id="tabla_datos_proveedores">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Telefono</th>
-                            <th>Correo</th>
-                            <th>Empresa</th>
-                            <th>Direccion de la empresa</th>
-                            <th>DPI</th>
-                            <th>Fecha de ingreso</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
+                <div id="tabla_proveedores" style="display: none;">
+                    <table id="tabla_datos_proveedores">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Telefono</th>
+                                <th>Correo</th>
+                                <th>Empresa</th>
+                                <th>Direccion de la empresa</th>
+                                <th>DPI</th>
+                                <th>Fecha de ingreso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                        </tbody>
+                    </table>
+                </div>
+        </center>
     </div>
 
     <div class="clientes" id="vistaClientes" style="display: none;">
-        <h1>FORMULARIO CLIENTES:</h3>
-            <form id="formulario_clientes">
-
-                <label>Nombre:</label>
-                <input type="text" id="form_nombre_clientes">
-
-                <label>Domicilio:</label>
-                <input type="text" id="form_domicilio_clientes">
-
-                <label>NIT:</label>
-                <input type="text" id="form_nit_clientes">
-
-                <label>Correo:</label>
-                <input type="text" id="form_correo_clientes">
-
+        <center>
+            <h1>FORMULARIO CLIENTES:</h3>
+                <form id="formulario_clientes">
+    
+                    <label>Nombre:</label>
+                    <input type="text" id="form_nombre_clientes">
+    
+                    <label>Domicilio:</label>
+                    <input type="text" id="form_domicilio_clientes">
+    
+                    <label>NIT:</label>
+                    <input type="text" id="form_nit_clientes">
+    
+                    <label>Correo:</label>
+                    <input type="text" id="form_correo_clientes">
+    
+                    <br>
+                    <br>
+                    <input type="button" value="Registrar" onclick="RegistrarDatos('clientes')">
+                </form>
                 <br>
-                <br>
-                <input type="button" value="Registrar" onclick="RegistrarDatos('clientes')">
-            </form>
-            <br>
-            <div id="tabla_clientes" style="display: none;">
-                <table id="tabla_datos_clientes">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Domicilio</th>
-                            <th>NIT</th>
-                            <th>Correo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
+                <div id="tabla_clientes" style="display: none;">
+                    <table id="tabla_datos_clientes">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Domicilio</th>
+                                <th>NIT</th>
+                                <th>Correo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                        </tbody>
+                    </table>
+                </div>
+        </center>
     </div>
 
     <div class="vendedores" id="vistaVendedores" style="display: none;">
-        <h1>FORMULARIO VENDEDORES:</h3>
-            <form id="formulario_vendedores">
-                <label>ID Vendedor:</label>
-                <input type="text" id="form_id_vendedor">
-
-                <label>Nombre:</label>
-                <input type="text" id="form_nombre_vendedor">
-
-                <label>Total de ventas:</label>
-                <input type="text" id="form_total_ventas_vendedor">
-
+        <center>
+            <h1>FORMULARIO VENDEDORES:</h3>
+                <form id="formulario_vendedores">
+                    <label>ID Vendedor:</label>
+                    <input type="text" id="form_id_vendedor">
+    
+                    <label>Nombre:</label>
+                    <input type="text" id="form_nombre_vendedor">
+    
+                    <label>Total de ventas:</label>
+                    <input type="text" id="form_total_ventas_vendedor">
+    
+                    <br>
+                    <br>
+                    <input type="button" value="Registrar" onclick="RegistrarDatos('vendedores')">
+                </form>
                 <br>
-                <br>
-                <input type="button" value="Registrar" onclick="RegistrarDatos('vendedores')">
-            </form>
-            <br>
-            <div id="tabla_vendedores" style="display: none;">
-                <table id="tabla_datos_vendedores">
-                    <thead>
-                        <tr>
-                            <th>ID Vendedor</th>
-                            <th>Nombre</th>
-                            <th>Total de ventas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
+                <div id="tabla_vendedores" style="display: none;">
+                    <table id="tabla_datos_vendedores">
+                        <thead>
+                            <tr>
+                                <th>ID Vendedor</th>
+                                <th>Nombre</th>
+                                <th>Total de ventas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                        </tbody>
+                    </table>
+                </div>
+        </center>
     </div>
 
     <div class="productos" id="vistaProductos" style="display: none;">
-        <h1>FORMULARIO PRODUCTOS:</h3>
-            <form id="formulario_productos">
-                <label>ID Producto:</label>
-                <input type="number" id="form_id_producto">
+        <center>
+            <h1>FORMULARIO PRODUCTOS:</h3>
+                <form id="formulario_productos">
+                    <label>ID Producto:</label>
+                    <input type="number" id="form_id_producto">
 
-                <label>Descripcion del producto:</label>
-                <input type="text" id="form_descripcion_producto">
+                    <label>Descripcion del producto:</label>
+                    <input type="text" id="form_descripcion_producto">
 
-                <label>Marca:</label>
-                <input type="text" id="form_marca_producto">
-
-                <label>Precio unitario:</label>
-                <input type="number" id="form_preciou_producto">
-
-                <label>Cantidad en existencia:</label>
-                <input type="number" id="form_cantidad_producto">
-
-                <label>Total de ventas:</label>
-                <input type="number" id="form_total_producto">
-
+                    <label>Marca:</label>
+                    <input type="text" id="form_marca_producto">
+                    <br>
+                    <label>Precio unitario:</label>
+                    <input type="number" id="form_preciou_producto">
+    
+                    <label>Cantidad en existencia:</label>
+                    <input type="number" id="form_cantidad_producto">
+    
+                    <label>Total de ventas:</label>
+                    <input type="number" id="form_total_producto">
+    
+                    <br>
+                    <br>
+                    <input type="button" value="Registrar" onclick="RegistrarDatos('productos')">
+                </form>
                 <br>
-                <br>
-                <input type="button" value="Registrar" onclick="RegistrarDatos('productos')">
-            </form>
-            <br>
-            <div id="tabla_productos" style="display: none;">
-                <table id="tabla_datos_productos">
-                    <thead>
-                        <tr>
-                            <th>ID Producto</th>
-                            <th>Descripcion del producto</th>
-                            <th>Marca</th>
-                            <th>Precio unitario</th>
-                            <th>Cantidad en existencia</th>
-                            <th>Total de ventas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
+                <div id="tabla_productos" style="display: none;">
+                    <table id="tabla_datos_productos">
+                        <thead>
+                            <tr>
+                                <th>ID Producto</th>
+                                <th>Descripcion del producto</th>
+                                <th>Marca</th>
+                                <th>Precio unitario</th>
+                                <th>Cantidad en existencia</th>
+                                <th>Total de ventas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                        </tbody>
+                    </table>
+                </div>
+        </center>
     </div>
     
     <br>
     <br>
 
-    <div class="flex-container" id="consolidaciones">
-        <div id="Text_consolidacion">
-            <table id="tabla_text_consolidadcion">
-                <thead>
-                    <tr>
-                        <th style="font-weight: bold; font-size: 20px;">CONSOLIDACION DE DATOS</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <div id="consolidacion_clientes">
+    <div id="texto_consolidacion" style="display: none;">
+        <center>
+            <h2 style="background-color: GREY; width: 300px; padding: 10px;">CONSOLIDACION DE DATOS</h2>
+        </center>
+    </div>
+    <div class="flex-container" id="consolidaciones" style="display: none;">
+        <div id="consolidacion_clientes" style="display: none;">
             <table id="tabla_consolidacion_clientes">
                 <thead>
                     <tr>
@@ -411,7 +441,7 @@
                 </tbody>
             </table>
         </div>
-        <div id="consolidacion_proveedores">
+        <div id="consolidacion_proveedores" style="display: none;">
             <table id="tabla_consolidacion_proveedores">
                 <thead>
                     <tr>
@@ -423,7 +453,7 @@
                 </tbody>
             </table>
         </div>
-        <div id="consolidacion_vendedores">
+        <div id="consolidacion_vendedores" style="display: none;">
             <table id="tabla_consolidacion_vendedores">
                 <thead>
                     <tr>
@@ -435,7 +465,7 @@
                 </tbody>
             </table>
         </div>
-        <div id="consolidacion_productos">
+        <div id="consolidacion_productos" style="display: none;">
             <table id="tabla_consolidacion_productos">
                 <thead>
                     <tr>
